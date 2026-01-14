@@ -3,24 +3,16 @@ kind: Ingress
 metadata:
   name: health-service-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  ingressClassName: nginx
   rules:
-  - host: arch.homework
-    http:
-      paths:
-      - path: /health
-        pathType: Prefix
-        backend:
-          service:
-            name: health-service-service
-            port:
-              number: 80
-      - path: /otusapp/(.*)/(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: health-service-service
-            port:
-              number: 80
+    - host: arch.homework
+      http:
+        paths:
+          - path: /health
+            pathType: Prefix
+            backend:
+              service:
+                name: health-service-service
+                port:
+                  number: 80
