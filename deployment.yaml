@@ -16,18 +16,18 @@ spec:
     spec:
       containers:
       - name: health-service
-        image: health-service:latest marishuk7/health-service
+        image: marishuk7/health-service:1.0
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
         livenessProbe:
           httpGet:
             path: /health
-            port: 8000
+            port: 8080
           initialDelaySeconds: 15
-          periodSeconds: 10
+          periodSeconds: 20
         readinessProbe:
           httpGet:
             path: /health
-            port: 8000
+            port: 8080
           initialDelaySeconds: 5
-          periodSeconds: 5
+          periodSeconds: 10
