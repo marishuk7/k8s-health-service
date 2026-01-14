@@ -5,7 +5,7 @@ metadata:
   labels:
     app: health-service
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: health-service
@@ -18,16 +18,16 @@ spec:
       - name: health-service
         image: marishuk7/health-service:1.0
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
         livenessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8000
           initialDelaySeconds: 15
           periodSeconds: 20
         readinessProbe:
           httpGet:
             path: /health
-            port: 8080
+            port: 8000
           initialDelaySeconds: 5
           periodSeconds: 10
